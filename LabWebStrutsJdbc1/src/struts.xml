@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="controller" />
+	
+	<package name="function1" namespace="/secure" extends="struts-default">
+		<action name="login" class="controller.LoginAction">
+			<result name="input">/secure/login.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+	</package>
+	<package name="function2" namespace="/pages" extends="struts-default">
+		<action name="product" class="controller.ProductAction">
+			<result name="input">/pages/product.jsp</result>
+			<result name="success">/pages/display.jsp</result>
+		</action>
+	</package>
+	
+	
+
+</struts>

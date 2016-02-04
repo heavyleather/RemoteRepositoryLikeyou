@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="model"></context:component-scan>
+-->
+<!--
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
+		<property name="url" value="jdbc:sqlserver://localhost:1433;database=java"></property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="P@ssw0rd"></property>
+	</bean>
+-->
+	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/xxx"></property>
+	</bean>
+	<bean id="customerDAO" class="model.dao.CustomerDAOJdbc">
+		<property name="dataSource" ref="dataSource"></property>	
+	</bean>
+	
+	<bean id="customerService" class="model.CustomerService">
+		<property name="customerDao" ref="customerDAO"></property>
+	</bean>
+
+	
+	<bean id="productDAO" class="model.dao.ProductDAOJdbc">
+		<property name="dataSource" ref="dataSource"></property>	
+	</bean>
+	
+	<bean id="productService" class="model.ProductService">
+		<property name="productDao" ref="productDAO"></property>
+	</bean>
+
+	
+</beans>
