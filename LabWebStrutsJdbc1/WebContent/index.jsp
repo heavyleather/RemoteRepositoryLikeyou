@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fuckyou GitHub</title>
+<title>Fuckyou</title>
 </head>
 <body>
 <fmt:setBundle basename="Message" var="bundle" />
